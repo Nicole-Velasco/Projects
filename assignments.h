@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 class Assignment {
     public:
@@ -8,6 +9,6 @@ class Assignment {
 
         Assignment(std::string n, std::string d, int diff);
 
-        int daysUntilDu() const;
+        int daysUntilDue() const;
         double urgencyScore() const;
 };
