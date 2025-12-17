@@ -1,12 +1,7 @@
 #include <iostream>
-#include "Planner.h"
+#include "planner.h"
 using namespace std;
 
-
-int main(){
-
-
-}
 
 void Planner::addAssignment(const Assignment& a){
     assignments.push_back(a);

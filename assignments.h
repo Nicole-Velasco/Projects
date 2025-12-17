@@ -1,3 +1,6 @@
+#ifndef ASSIGNMENTS_H
+#define ASSIGNMENTS_H
+
 #include <iostream>
 #include <string>
 
@@ -12,3 +15,5 @@ class Assignment {
         int daysUntilDue() const;
         double urgencyScore() const;
 };
+
+#endif

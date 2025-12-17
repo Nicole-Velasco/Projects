@@ -1,7 +1,9 @@
 #include <iostream>
 using namespace std;
+#include "assignments.h"
 
-int main(){
-    cout<<"test"<<endl;
-    return 0;
-};
+Assignment::Assignment(string name, string date, int diff)
+: name(name), dueDate(date), difficulty(diff){
+    
+}
+
