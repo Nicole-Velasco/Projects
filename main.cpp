@@ -1,24 +1,76 @@
 #include <iostream>
+#include <limits> // for getDifficulty()
 #include "planner.h"
 #include "assignments.h"
 using namespace std;
 
+int getDifficulty();
+
 int main(){
     Planner planner; //create a planner
+    int choice;
 
-    //test cases
-    Assignment a1("CS Hw", "3-14-2025", 3);
-    Assignment a2("Bio Hw", "4-5-2025", 2);
-    Assignment a3("Math Hw", "5-16-2025", 5);
+    while (true)
+    {
+        cout << "\n Smart Study Planner"<<endl;
+        cout << "1.\t Add assignment"<<endl;
+        cout << "2:\t View all assignments"<<endl;
+        cout << "3:\t Exit"<<endl;
+        cout << "Enter your choice:\t";
 
-    planner.addAssignment(a1);
-    planner.addAssignment(a2);
+        cin >> choice;
 
-    planner.listAssignments();
+        switch(choice){
+            case 1:{ // must add {} when declaring variable in switch
+                string name;
+                string dueDate;
+                int difficulty;
 
-    planner.addAssignment(a3);
+                cout << "Assignment name: ";
+                cin.ignore();
+                getline(cin,name);
 
-    planner.listAssignments();
+                cout << "\n Due date (MM/DD/YYY):";
+                getline(cin,dueDate);
+
+                difficulty = getDifficulty();
+
+                Assignment a(name,dueDate,difficulty);
+                planner.addAssignment(a);
+
+                cout << "Assignment has been added"<<endl; 
+                break;
+            }
+
+            case 2:
+                planner.listAssignments();
+                break;
+            
+            case 3: 
+                cout<<"Goodbye"<<endl;
+                return 0;
+            default:
+                cout<< "Invalid input. try again.\n";
+        }
+
+    }
+    
 
     return 0;
+}
+
+int getDifficulty(){
+    int d;
+
+    while(true){
+        cout << "Difficulty (1-5)";
+        cin >> d;
+
+        if(!cin.fail()&& d<=5 && d>=1)
+            return d;
+
+        cin.clear();
+        std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input.\n"; 
+    };
 }

@@ -11,6 +11,6 @@ void Planner::listAssignments() const{
     cout << "All assignments:" << endl;
 
     for(const Assignment& a : assignments){
-        cout << a.name << " | Due:" << a.dueDate << " | Difficulty: "<< a.difficulty<<endl;
+        cout << a.name << " | Due: " << a.dueDate << " | Difficulty: "<< a.difficulty<<endl;
     }
 }
