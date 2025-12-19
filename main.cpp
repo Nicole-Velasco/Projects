@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits> // for getDifficulty()
+#include <typeinfo> // returns type of variable
 #include "planner.h"
 #include "assignments.h"
 using namespace std;
@@ -8,6 +9,7 @@ int getDifficulty();
 
 int main(){
     Planner planner; //create a planner
+    planner.loadFromFile("assignments.txt");
     int choice;
 
     while (true)
@@ -19,7 +21,11 @@ int main(){
         cout << "Enter your choice:\t";
 
         cin >> choice;
-
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        
         switch(choice){
             case 1:{ // must add {} when declaring variable in switch
                 string name;
@@ -45,32 +51,27 @@ int main(){
             case 2:
                 planner.listAssignments();
                 break;
-            
             case 3: 
+                planner.saveToFile("assignments.txt");
                 cout<<"Goodbye"<<endl;
                 return 0;
             default:
-                cout<< "Invalid input. try again.\n";
+                cout<< "Invalid input.\n";
+                break;
         }
-
     }
-    
-
     return 0;
 }
 
 int getDifficulty(){
     int d;
-
     while(true){
         cout << "Difficulty (1-5)";
         cin >> d;
-
         if(!cin.fail()&& d<=5 && d>=1)
             return d;
-
         cin.clear();
-        std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Invalid input.\n"; 
     };
 }
