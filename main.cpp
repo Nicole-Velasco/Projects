@@ -68,7 +68,7 @@ int getDifficulty(){
     while(true){
         cout << "Difficulty (1-5)";
         cin >> d;
-        if(!cin.fail()&& d<=5 && d>=1)
+        if(!cin.fail()&& d<=5 && d>=1) /// checks it's not invalid input
             return d;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');

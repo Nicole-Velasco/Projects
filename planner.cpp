@@ -6,7 +6,7 @@ using namespace std;
 
 
 void Planner::addAssignment(const Assignment& a){
-    assignments.push_back(a);
+    assignments.push_back(a); // adds to end 
 }
 
 void Planner::listAssignments() const{
